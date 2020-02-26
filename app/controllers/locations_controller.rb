@@ -1,0 +1,3 @@
+LocationsController < ApplicationController
+
+end

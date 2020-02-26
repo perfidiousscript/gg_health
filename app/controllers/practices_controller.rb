@@ -1,0 +1,3 @@
+PracticesController < ApplicationController
+
+end
