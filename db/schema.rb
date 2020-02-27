@@ -21,17 +21,17 @@ ActiveRecord::Schema.define(version: 2020_02_26_225903) do
     t.string "phone_number", null: false
     t.jsonb "contact", default: "{}", null: false
     t.jsonb "services", default: "{}", null: false
-    t.bigint "practices_id"
+    t.bigint "practice_id"
     t.text "staff", default: [], array: true
-    t.index ["practices_id"], name: "index_locations_on_practices_id"
+    t.index ["practice_id"], name: "index_locations_on_practice_id"
   end
 
   create_table "practices", force: :cascade do |t|
     t.string "name", null: false
     t.jsonb "contact", default: "{}", null: false
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.text "staff", default: [], array: true
-    t.index ["users_id"], name: "index_practices_on_users_id"
+    t.index ["user_id"], name: "index_practices_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,6 +41,6 @@ ActiveRecord::Schema.define(version: 2020_02_26_225903) do
     t.integer "role", default: 0, null: false
   end
 
-  add_foreign_key "locations", "practices", column: "practices_id"
-  add_foreign_key "practices", "users", column: "users_id"
+  add_foreign_key "locations", "practices"
+  add_foreign_key "practices", "users"
 end
