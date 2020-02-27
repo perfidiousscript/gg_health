@@ -1,4 +1,4 @@
-UsersController < ApplicationController
+class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
@@ -27,4 +27,5 @@ UsersController < ApplicationController
   def user_params
       params.require(:first_name, :last_name, :email_address, :role)
   end
+
 end
