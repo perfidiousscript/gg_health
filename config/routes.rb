@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   resources :users do
-    resources :practices, only: [:index] do
-      resources :locations, only: [:index]
-    end
+    resources :practices, only: [:index]
   end
-  resources :practices, :locations 
+
+  resources :practices do
+    resources :locations, only: [:index]
+  end
+  resources :locations
 end
