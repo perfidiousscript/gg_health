@@ -6,5 +6,8 @@ Rails.application.routes.draw do
   resources :practices do
     resources :locations, only: [:index]
   end
+
   resources :locations
+
+  get '/location_search', to: 'locations#search' 
 end
