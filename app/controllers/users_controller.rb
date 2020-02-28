@@ -9,9 +9,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
 
-    if @user != null
+    if @user != nil
       render json: @user
     else
       render :not_found
