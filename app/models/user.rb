@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :practices
   has_many :locations, through: :practices
   geocoded_by :coordinates
+  after_validation :geocode
 
   def coordinates
     [latitude, longitude].compact.join(', ')
