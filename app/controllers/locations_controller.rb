@@ -26,6 +26,20 @@ class LocationsController < ApplicationController
     render json: @locations
   end
 
+  def search
+
+    @search_distance = params[:search_distance] || 10
+
+    if params[:latitude] != nil and params[:longitude]
+      @locations = Location.near([params[:latitude],params[:longitude]], @search_distance)
+    else
+      render json: {"error":"Location data missing!"}
+      return
+    end
+
+    render json: @locations
+  end
+
   def location_params
       params.permit(:name, :address, :phone_number, :contact, :services, :practice_id, :staff, :latitude, :longitude)
   end
