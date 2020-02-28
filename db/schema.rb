@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_26_225903) do
+ActiveRecord::Schema.define(version: 2020_02_28_192428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2020_02_26_225903) do
     t.jsonb "services", default: "{}", null: false
     t.bigint "practice_id"
     t.text "staff", default: [], array: true
+    t.float "latitude"
+    t.float "longitude"
     t.index ["practice_id"], name: "index_locations_on_practice_id"
   end
 
@@ -39,6 +41,8 @@ ActiveRecord::Schema.define(version: 2020_02_26_225903) do
     t.string "last_name", null: false
     t.string "email_address", null: false
     t.integer "role", default: 0, null: false
+    t.float "latitude"
+    t.float "longitude"
   end
 
   add_foreign_key "locations", "practices"
