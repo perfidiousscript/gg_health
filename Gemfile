@@ -22,7 +22,10 @@ gem 'puma', '~> 4.3.2'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+# Handles addresses and distances for location and users.
 gem 'geocoder', '~>1.6'
+
+gem 'jwt', '~>2.2'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
