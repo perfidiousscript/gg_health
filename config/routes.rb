@@ -9,5 +9,9 @@ Rails.application.routes.draw do
 
   resources :locations
 
-  get '/location_search', to: 'locations#search' 
+  post "/login", to: "auth#login"
+  get "/auto_login", to: "auth#auto_login"
+  get "/user_is_authed", to: "auth#user_is_authed"
+
+  get '/location_search', to: 'locations#search'
 end
