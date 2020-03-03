@@ -25,10 +25,13 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # Handles addresses and distances for location and users.
 gem 'geocoder', '~>1.6'
 
-# Handles JWTs for authentication
+# Authentication gems
 gem 'bcrypt', '~>3.1'
 gem 'simple_command', '~>0.1'
 gem 'jwt', '~>2.2'
+
+# Handles authorization and permissions
+gem 'cancancan', '~>3.0'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
