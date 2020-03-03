@@ -1,4 +1,5 @@
 class LocationsController < ApplicationController
+  load_and_authorize_resource
 
   def create
     @Practice = Practice.find(params[:practice_id])

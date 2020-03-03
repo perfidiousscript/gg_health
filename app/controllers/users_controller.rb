@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_request, :only => [:create]
-  
+  load_and_authorize_resource
+
   def create
     @user = User.new(user_params)
     if @user.save
