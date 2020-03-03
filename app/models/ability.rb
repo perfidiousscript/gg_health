@@ -5,16 +5,17 @@ class Ability
 
   def initialize(user)
     can :create, User
-    if user.consumer?
+    if user.present?
       can :show, User, id: user.id
       can :update, User, id: user.id
+      can :search, Location
     end
     if user.manager?
-      can :update, Practice, user_id: user.id
-      #can :update, Location, id: user.id
+      can :create, [Practice, Location]
+      can :manage, Practice, user_id: user.id
+      can :update, Location, practice: { user: {id: user.id} }
     end
     if user.admin?
-      can :read, :all
       can :manage, :all
     end
   end
