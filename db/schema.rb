@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_28_192428) do
+ActiveRecord::Schema.define(version: 2020_03_03_002926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2020_02_28_192428) do
     t.integer "role", default: 0, null: false
     t.float "latitude"
     t.float "longitude"
+    t.string "password_digest"
   end
 
   add_foreign_key "locations", "practices"
