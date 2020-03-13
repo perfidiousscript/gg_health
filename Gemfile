@@ -40,7 +40,7 @@ gem 'cancancan', '~>3.0'
 gem 'active_model_serializers', '~>0.10'
 
 #Allows calls from front-end
-gem 'rack-cors'
+gem 'rack-cors', '~>1.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
