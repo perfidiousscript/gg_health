@@ -1,5 +1,5 @@
 class LocationsController < ApplicationController
-  load_and_authorize_resource
+  # load_and_authorize_resource
 
   def create
     @Practice = Practice.find(params[:practice_id])
@@ -31,9 +31,9 @@ class LocationsController < ApplicationController
 
     @search_distance = params[:search_distance] || 10
 
-    if params[:latitude] != nil and params[:longitude] !=nil and params[:services] != nil
+    if params[:services] != nil
       @locations = Location.near([params[:latitude],params[:longitude]], @search_distance).where('services @> ?', {services:params[:services]}.to_json)
-    elsif
+    elsif params[:latitude] != nil and params[:longitude] !=nil
       @locations = Location.near([params[:latitude],params[:longitude]], @search_distance)
     else
       render json: {"error":"Location data missing!"}

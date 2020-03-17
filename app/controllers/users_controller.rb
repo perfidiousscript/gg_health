@@ -2,20 +2,21 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_request, :only => [:create]
   load_and_authorize_resource
 
+
   def create
     @user = User.new(user_params)
-    if @user.save
-      render json: @user, status: :created
+    if @user.save!
+      command = AuthenticateUser.call(params[:email_address], params[:password])
+      render json: {user: @user, auth_token: command.result}, status: :created
     else
       render status: :internal_server_error
     end
   end
 
   def update
-    @user = User.find(params[:id])
-    @user.assign_attributes(user_params)
+    @current_user.assign_attributes(user_params)
 
-    if @user.save
+    if @current_user.save
       render json: @user, status: :created
     else
       render status: :internal_server_error
