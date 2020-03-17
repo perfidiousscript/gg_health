@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @current_user.assign_attributes(user_params)
 
     if @current_user.save
-      render json: @user, status: :created
+      render json: {user: @current_user}, status: :ok
     else
       render status: :internal_server_error
     end

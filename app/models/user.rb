@@ -10,11 +10,15 @@ class User < ApplicationRecord
     [latitude, longitude].compact.join(', ')
   end
 
-  def manager?
-    role == "manager" || "admin"
+  def is_practitioner?
+    role == "pracitioner"
   end
 
-  def admin?
+  def is_manager?
+    role == "manager"
+  end
+
+  def is_admin?
     role == "admin"
   end
 
