@@ -44,4 +44,12 @@ class UsersController < ApplicationController
       params.permit(:first_name, :last_name, :email_address, :password, :role, :latitude, :longitude)
   end
 
+  def profile
+    if @current_user
+      render json: {user: @current_user}
+    else
+      render json: {error: "Invalid Token"}
+    end
+  end
+
 end
