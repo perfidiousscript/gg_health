@@ -11,7 +11,7 @@ class PracticesController < ApplicationController
     end
 
     if @practice.save
-      render @practice, status: :created
+      render json: {practice: @practice, status: :created}
     else
       render status: :internal_server_error
     end
@@ -19,12 +19,15 @@ class PracticesController < ApplicationController
   end
 
   def index
-    if params[:user_id].present?
-      @practices = User.find(params[:user_id]).practices
+
+    @practices = @current_user.practices
+
+    if @practices
+      render json: {practices: @practices, status: :ok}
     else
-      @practices = Practice.all
+      render json: {error: 'Could not find Practices.'}
     end
-    render json: @practices
+
   end
 
   def show
