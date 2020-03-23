@@ -4,6 +4,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    can :profile, User
     can :create, User
     if user.present?
       can :show, User, id: user.id
