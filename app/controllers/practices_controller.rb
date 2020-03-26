@@ -18,6 +18,20 @@ class PracticesController < ApplicationController
 
   end
 
+  def update
+    @practice = Practice.find(params[:id])
+
+    byebug
+
+    @practice.assign_attributes(practice_params)
+
+    if @practice.save!
+      render json: {practice: @practice, status: :ok}
+    else
+      render json: {status: :internal_server_error}
+    end
+  end
+
   def index
 
     @practices = @current_user.practices
@@ -41,7 +55,7 @@ class PracticesController < ApplicationController
   end
 
   def practice_params
-      params.permit(:name, :contact, :user_id, :staff)
+      params.permit(:name, :user_id, contact: [:type,:value], staff:{})
   end
 
 end
