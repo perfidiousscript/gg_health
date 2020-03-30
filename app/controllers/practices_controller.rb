@@ -21,8 +21,6 @@ class PracticesController < ApplicationController
   def update
     @practice = Practice.find(params[:id])
 
-    byebug
-
     @practice.assign_attributes(practice_params)
 
     if @practice.save!
