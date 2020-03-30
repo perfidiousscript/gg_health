@@ -44,7 +44,7 @@ staff = [0,1]
 
 20.times do |i|
   service = services_list.sample
-  service_hash = {services: service}
+  service_hash = {primary_service: service, secondary_services: []}
   name = "Melinda's #{service} #{i}"
   lat = rand(bounding_box[0].to_f..bounding_box[1].to_f)
   long = rand(bounding_box[2].to_f..bounding_box[3].to_f)
