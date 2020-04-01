@@ -13,7 +13,7 @@ class Ability
       if user.is_manager?
         can :create, [Practice, Location]
         can :manage, Practice, user_id: user.id
-        can :update, Location, practice: { user: {id: user.id} }
+        can :manage, Location, practice: { user: {id: user.id} }
       end
       if user.is_admin?
         can :manage, :all
