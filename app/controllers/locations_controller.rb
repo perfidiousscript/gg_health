@@ -31,7 +31,7 @@ class LocationsController < ApplicationController
 
     @search_distance = params[:search_distance] || 10
 
-    @grouped_locations = {}
+    @grouped_locations = []
 
     if params[:services] != nil
       @locations = Location.near([params[:latitude],params[:longitude]], @search_distance).where('services @> ?', {services:params[:services]}.to_json)
