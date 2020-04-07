@@ -60,10 +60,12 @@ class LocationsController < ApplicationController
     grouped_locations = {}
 
     locations.each do |location|
-      if grouped_locations[location.services["primary_service"]]
-        grouped_locations[location.services["primary_service"]].push(location)
+      service_type = location.services["primary_service"]
+      if grouped_locations[service_type]
+        grouped_locations[service_type][:locations].push(location)
       else
-        grouped_locations[location.services["primary_service"]] = [location]
+        initial_hash = {locations: [location]}
+        grouped_locations[service_type] = initial_hash
       end
     end
 
