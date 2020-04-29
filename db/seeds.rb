@@ -48,6 +48,6 @@ staff = [0,1]
   name = "Melinda's #{service} #{i}"
   lat = rand(bounding_box[0].to_f..bounding_box[1].to_f)
   long = rand(bounding_box[2].to_f..bounding_box[3].to_f)
-  location = melinda.practices.first.locations.create(name: name, address: address, phone_number: phone_number, contact: contact, services: service_hash, latitude: lat, longitude: long, staff: staff)
+  location = melinda.practices.first.locations.create(name: name, address: address, phone_number: phone_number, contact: contact, services: service_hash, latitude: lat, longitude: long, staff: staff, calendar: {})
   location_list.push(location)
 end
